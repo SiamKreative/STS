@@ -1,6 +1,7 @@
 var express = require('express');
 var TrackService = require('thailand-post').TrackService;
 var app = express();
+var minifyHTML = require('express-minify-html');
 var path = require('path');
 
 // Set language
@@ -10,6 +11,20 @@ var trackService = new TrackService({
 
 // Set language
 app.set('view engine', 'ejs');
+
+// Minify HTML
+app.use(minifyHTML({
+	override: true,
+	exception_url: false,
+	htmlMinifier: {
+		removeComments: true,
+		collapseWhitespace: true,
+		collapseBooleanAttributes: true,
+		removeAttributeQuotes: true,
+		removeEmptyAttributes: true,
+		minifyJS: true
+	}
+}));
 
 // viewed at http://localhost:8080
 app.get('/', function (req, res) {
