@@ -40,7 +40,7 @@ app.get('/', function (req, res) {
 
 		trackService.init(function (err, serv) {
 			serv.getItem(trackCode, function (err, result) {
-				var lastItem = result.ItemsData.Items.pop();
+				var lastItem = result.ItemsData.Items.slice(-1)[0];
 
 				res.render('index', {
 					trackCode: trackCode,
