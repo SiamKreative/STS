@@ -1,4 +1,5 @@
 var express = require('express');
+var compression = require('compression');
 var TrackService = require('thailand-post').TrackService;
 var app = express();
 var minifyHTML = require('express-minify-html');
@@ -11,6 +12,9 @@ var trackService = new TrackService({
 
 // Set language
 app.set('view engine', 'ejs');
+
+// Gzip
+app.use(compress());
 
 // Minify HTML
 app.use(minifyHTML({
