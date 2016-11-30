@@ -34,6 +34,7 @@
 								</thead>
 								<tbody>
 									<% items.forEach(function(item, index) { %>
+									<% items.reverse().forEach(function(item, index) { %>
 									<tr class="striped--near-white">
 										<th scope="row" class="pv2 ph3"><%= index + 1 %></th>
 										<td class="pv2 ph3"><%= item.DateTime %></td>
