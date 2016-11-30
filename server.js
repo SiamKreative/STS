@@ -1,5 +1,5 @@
-var express = require('express');
 var compression = require('compression');
+var express = require('express');
 var TrackService = require('thailand-post').TrackService;
 var app = express();
 var minifyHTML = require('express-minify-html');
@@ -14,6 +14,7 @@ var trackService = new TrackService({
 app.set('view engine', 'ejs');
 
 // GZIP compress all responses
+app.use(compression());
 
 // Minify HTML
 app.use(minifyHTML({
