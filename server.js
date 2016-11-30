@@ -13,8 +13,7 @@ var trackService = new TrackService({
 // Set language
 app.set('view engine', 'ejs');
 
-// Gzip
-app.use(compress());
+// GZIP compress all responses
 
 // Minify HTML
 app.use(minifyHTML({
