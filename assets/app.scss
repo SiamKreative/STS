@@ -1,10 +1,17 @@
+/* Overrides Boostrap variables
+-------------------------------------------------- */
 $enable-flex: true;
 $brand-primary: #3498db;
 $font-family-sans-serif: 'Lato', sans-serif;
 $headings-font-family: 'Roboto', sans-serif;
 $headings-font-weight: 300;
+
+/* Import Boostrap SASS
+-------------------------------------------------- */
 @import '../node_modules/bootstrap/scss/bootstrap';
 
+/* Loading styles
+-------------------------------------------------- */
 .loading {
 	display: none;
 	transition: opacity 300ms ease-out;
@@ -42,6 +49,8 @@ $headings-font-weight: 300;
 	display: none;
 }
 
+/* Animations
+-------------------------------------------------- */
 @keyframes spinnerAnim {
 	to {
 		transform: rotate(360deg);
