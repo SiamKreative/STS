@@ -39,12 +39,13 @@ router.route('/:code').get(function (req, res) {
 		serv.getItem(trackCode, function (err, result) {
 			var lastItem = result.ItemsData.Items.pop();
 			// Create JSON endpoint to be displayed by vue.js
-			res.json('index', {
+			var obj = {
 				trackCode: trackCode,
 				title: 'Success! Your item is located at ' + lastItem.Location,
 				items: result.ItemsData.Items,
 				lastItem: lastItem
-			});
+			}
+			res.status(200).json(obj);
 		});
 	});
 });
