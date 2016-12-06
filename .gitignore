@@ -99,3 +99,8 @@ jspm_packages
 
 # Yarn Integrity file
 .yarn-integrity
+
+
+### STS ###
+assets/track.min.js
+prepros.cfg
