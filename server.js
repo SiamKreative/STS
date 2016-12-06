@@ -16,9 +16,6 @@ var trackService = new TrackService({
 	lang: "EN"
 });
 
-// Set language
-app.set('view engine', 'ejs');
-
 // Show HTML template
 app.get('/', function (req, res) {
 	res.sendFile(__dirname + '/index.html');
@@ -28,11 +25,10 @@ app.get('/', function (req, res) {
 app.use('/assets', express.static(path.join(__dirname, 'assets')))
 
 // Get an instance of the express Router
-var router = express.Router(); 
+var router = express.Router();
 
 // Middleware to use for all requests
 router.use(function (req, res, next) {
-	console.log('Something is happening.');
 	next();
 });
 
@@ -43,7 +39,6 @@ router.route('/:code').get(function (req, res) {
 		serv.getItem(trackCode, function (err, result) {
 			var lastItem = result.ItemsData.Items.pop();
 			// Create JSON endpoint to be displayed by vue.js
-			// res.status(200).json(obj);
 			res.json('index', {
 				trackCode: trackCode,
 				title: 'Success! Your item is located at ' + lastItem.Location,
