@@ -59,4 +59,4 @@ app.get('/', function (req, res) {
 
 });
 
-app.listen(process.env.PORT || 5000);
+app.listen(process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 5000);
