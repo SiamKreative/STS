@@ -91,16 +91,16 @@
 
 		<div id="trackingHistory">
 			<div class="container">
-				<div class="alert alert-success loading" v-bind:class="{ loaded: isLoaded }" role="alert">
+				<div class="alert alert-success loading" v-bind:class="{ loaded: !loading }" role="alert">
 					<strong>Package located!</strong> Your package {{ trackCode }} is at Great Britain (GBGBLALA)
 				</div>
 
 				<!-- Loading state -->
 				<p v-show="loading">Please wait while we get your package tracking information.</p>
-				<div class="loading-spinner" v-bind:class="{ loaded: isLoaded }"></div>
+				<div class="loading-spinner" v-bind:class="{ loaded: !loading }"></div>
 
 				<!-- Timeline table -->
-				<table class="table table-striped loading" v-bind:class="{ loaded: isLoaded }">
+				<table class="table table-striped loading" v-bind:class="{ loaded: !loading }">
 					<thead>
 						<tr>
 							<td>#</td>

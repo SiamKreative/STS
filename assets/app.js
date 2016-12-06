@@ -13,7 +13,6 @@ new Vue({
 		loading: true,
 		hasCode: false,
 		trackCode: '',
-		isLoaded: false,
 		items: null
 	},
 	created: function () {
@@ -28,12 +27,11 @@ new Vue({
 				self.trackCode = trackCode;
 
 				// Get API endpoint
-				var apiEnpoint = '/api/' + trackCode;
+				self.apiEnpoint = '/api/' + self.trackCode;
 
 				// Query our API and Update UI
-				self.$http.get(apiEnpoint).then(function (response) {
+				self.$http.get(self.apiEnpoint).then(function (response) {
 					self.loading = false;
-					self.isLoaded = true;
 					self.items = response.body.items;
 				})
 			} else {
