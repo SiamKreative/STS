@@ -19,13 +19,17 @@ $headings-font-weight: 300;
 
 .loaded {
 	display: block;
-	animation: fadeInFromNone 0.5s ease-out;
+	animation: fadeInFromNone .8s ease-out;
 }
 
 .loading-spinner {
 	position: relative;
 	width: 80px;
 	height: 80px;
+
+	&.loaded {
+		display: none;
+	}
 
 	&:before {
 		content: '';
@@ -43,10 +47,6 @@ $headings-font-weight: 300;
 		animation: spinnerAnim .6s linear infinite;
 	}
 
-}
-
-.loading-spinner.loaded {
-	display: none;
 }
 
 /* Animations
