@@ -1,0 +1,171 @@
+body {
+	font-family: 'Lato', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+}
+
+.btn-primary {
+	background-color: #3498db;
+}
+
+.loading {
+	display: none;
+	transition: opacity 300ms ease-out;
+}
+
+.loaded {
+	display: block;
+	animation: fadeInFromNone 0.5s ease-out;
+}
+
+.loading-spinner {
+	position: relative;
+	width: 80px;
+	height: 80px;
+}
+
+.loading-spinner.loaded {
+	display: none;
+}
+
+.loading-spinner:before {
+	content: '';
+	box-sizing: border-box;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 80px;
+	height: 80px;
+	margin-top: -40px;
+	margin-left: -40px;
+	border-radius: 50%;
+	border: 1px solid #ccc;
+	border-top-color: #07d;
+	animation: spinnerAnim .6s linear infinite;
+}
+
+@keyframes spinnerAnim {
+	to {
+		transform: rotate(360deg);
+	}
+
+}
+
+@keyframes fadeInFromNone {
+	0% {
+		display: none;
+		opacity: 0;
+	}
+
+	1% {
+		display: block;
+		opacity: 0;
+	}
+
+	100% {
+		display: block;
+		opacity: 1;
+	}
+
+}
+
+@keyframes bounce {
+	0%,
+	20%,
+	60%,
+	100% {
+		transform: translateY(0);
+	}
+
+	40% {
+		transform: translateY(-10px);
+	}
+
+	80% {
+		transform: translateY(-5px);
+	}
+
+}
+
+/* Header & Footer
+-------------------------------------------------- */
+#mainNav {
+	border-bottom: 1px solid #eee;
+}
+
+#mainNav .navbar-brand {
+	color: #3498db;
+}
+
+#mainNav .navbar-nav .nav-item+.nav-item {
+	margin-left: 2rem;
+}
+
+#footerMain {
+	border-top: 1px solid #eee;
+}
+
+/* Track Package
+-------------------------------------------------- */
+#trackNew .container {
+	padding-top: 7.5rem;
+	padding-bottom: 7.5rem;
+}
+
+#trackNew .col-img:hover {
+	animation: bounce 1s ease infinite;
+}
+
+.hasCode #trackNew .container {
+	padding-top: 2.5rem;
+	padding-bottom: 2.5rem;
+}
+
+.hasCode .example-trackingcode,
+.hasCode #trackNew .col-img {
+	display: none;
+}
+
+/* Tracking History
+-------------------------------------------------- */
+#trackingHistory {
+	display: none;
+}
+
+.hasCode #trackingHistory {
+	display: block;
+}
+
+.hasCode #trackingHistory .tag {
+	font-size: .5em;
+	padding: 1.2em;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+	position: relative;
+	min-height: 100%;
+}
+
+body {
+
+	/* Margin bottom by footer height */
+	margin-bottom: 60px;
+}
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 60px;
+	line-height: 60px;
+}

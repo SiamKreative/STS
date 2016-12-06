@@ -1,0 +1,145 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>STS - Track Thailand Post Shipments</title>
+	<meta name="description" content="Track Thailand Post shipments and get delivery status online.">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Prefetch DNS for external assets -->
+	<link rel="dns-prefetch" href="//www.google-analytics.com"> 
+	<link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+
+	<!-- Fonts -->
+	<link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+	<link href="https://fonts.googleapis.com/css?family=Lato|Roboto" rel="stylesheet">
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.5/css/bootstrap-flex.min.css">
+	<link rel="stylesheet" href="/assets/app.css">
+</head>
+<body>
+	<div id="app" v-bind:class="{ hasCode: hasCode }">
+
+		<nav id="mainNav" class="navbar navbar-light bg-faded">
+			<div class="container">
+				<a href="./">
+					<h1 class="navbar-brand mb-0">
+						Siam Tracking Sytem
+					</h1>
+				</a>
+				<ul class="nav navbar-nav float-xs-right">
+					<li class="nav-item active">
+						<a class="nav-link" href="./">Home <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="https://siamkreative.com/post/building-a-simple-application-with-node-js-express-and-tachyons/">About</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="https://github.com/SiamKreative/STS">Github</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="https://twitter.com/siamkreative">Contact</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+		<div id="trackNew">
+			<div class="container">
+				<div class="row flex-items-xs-middle">
+					<div class="col-lg-6 col-md-12 col-form">
+						<img src="/assets/images/logo.svg" class="logo" height="120" alt="">
+						<h2>Track Thailand Post Shipments</h2>
+						<p class="form-text" id="trackNewHelp">Enter tracking number to track Thailand Post shipments and get delivery status online.</p>
+						<p class="example-trackingcode text-muted">Try with the following code: <a href="/?track=RR215008638TH">RR215008638TH</a></p>
+						<form action="./" method="get" class="form-inline">
+							<label class="sr-only" for="track">Tracking Code</label>
+							<div class="input-group input-group-lg">
+								<input required="" aria-describedby="trackNewHelp" type="text" class="form-control" id="track" name="track" placeholder="Enter tracking code...">
+								<span class="input-group-btn">
+									<button class="btn btn-primary" type="submit">Track Now</button>
+								</span>
+							</div>
+						</form>
+					</div>
+					<div class="col-lg-6 hidden-md-down col-img">
+						<img class="img-fluid" src="/assets/images/bg.jpg" alt="">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="trackingHistory">
+			<div class="container">
+				<div class="alert alert-success loading" v-bind:class="{ loaded: isLoaded }" role="alert">
+					<strong>Package located!</strong> Your package {{ trackCode }} is at Great Britain (GBGBLALA)
+				</div>
+
+				<!-- Loading state -->
+				<p v-show="loading">Please wait while we get your package tracking information.</p>
+				<div class="loading-spinner" v-bind:class="{ loaded: isLoaded }"></div>
+
+				<!-- Timeline table -->
+				<table class="table table-striped loading" v-bind:class="{ loaded: isLoaded }">
+					<thead>
+						<tr>
+							<td>#</td>
+							<td>Date / Time</td>
+							<td>Status</td>
+							<td>Post Office</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-for="(item, index) in items">
+							<th scope="row">{{ index + 1 }}</th>
+							<td>{{ item.DateTime }}</td>
+							<td>{{ item.StatusName }} {{ item.Description }}</td>
+							<td><a target="_blank" title="Directions on Google Maps" href="https://www.google.com/maps/dir/Current+Location/{{ item.PostGPS }}">{{ item.Location }}</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div id="footerMain" class="footer bg-faded">
+			<div class="container clearfix">
+				<div class="float-xs-left">
+					Proudly crafted in Bangkok by <a href="https://siamkreative.com/">SiamKreative</a>
+				</div>
+				<div class="float-xs-right">
+					<small>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></small>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.4/vue.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.0.3/vue-resource.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+	<script src="/assets/js/vue-moment.min.js"></script>
+	<script src="/assets/app.js"></script>
+</body>
+</html>
