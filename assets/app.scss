@@ -131,6 +131,21 @@ $headings-font-weight: 300;
 -------------------------------------------------- */
 #trackingHistory {
 	display: none;
+
+	.alert-info {
+		display: inline-block;
+	}
+	.alert-success {
+		&.loading {
+			display: none;
+		}
+
+		&.loaded {
+			display: inline-block;
+		}
+
+	}
+
 }
 
 .hasCode {
