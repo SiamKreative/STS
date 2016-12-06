@@ -9,8 +9,10 @@
   "author": "Julien Vernet <julien@vernet.me>",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "ejs": "^2.5.2",
     "express": "^4.14.0",
-    "thailand-post": "^2.0.0"
+    "thailand-post": "^2.0.0",
+    "vue-resource": "^1.0.3"
   }
 }
