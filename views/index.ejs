@@ -26,20 +26,17 @@
 							<table class="collapse ba br2 b--black-10 pv2 ph3 mt4">
 								<thead>
 									<tr>
-										<td class="pv2 ph3">#</td>
 										<td class="pv2 ph3">Date / Time</td>
 										<td class="pv2 ph3">Status</td>
 										<td class="pv2 ph3">Post Office</td>
 									</tr>
 								</thead>
 								<tbody>
-									<% items.forEach(function(item, index) { %>
 									<% items.reverse().forEach(function(item, index) { %>
 									<tr class="striped--near-white">
-										<th scope="row" class="pv2 ph3"><%= index + 1 %></th>
 										<td class="pv2 ph3"><%= item.DateTime %></td>
 										<td class="pv2 ph3"><%= item.StatusName %> <%= item.Description %></td>
-										<td class="pv2 ph3"><a href="https://www.google.com/maps/dir/Current+Location/<%= item.PostGPS %>"><%= item.Location %></a></td>
+										<td class="pv2 ph3"><span class="flag-icon flag-icon-<%= item.CountryID.toLowerCase(); %>"></span> <a href="https://www.google.com/maps/dir/Current+Location/<%= item.PostGPS %>"><%= item.Location %></a></td>
 									</tr>
 									<% }); %>
 								</tbody>
