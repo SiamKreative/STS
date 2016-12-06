@@ -1,23 +1,9 @@
 $enable-flex: true;
+$brand-primary: #3498db;
+$font-family-sans-serif: 'Lato', sans-serif;
+$headings-font-family: 'Roboto', sans-serif;
+$headings-font-weight: 300;
 @import '../node_modules/bootstrap/scss/bootstrap';
-
-body {
-	font-family: 'Lato', sans-serif;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	font-family: 'Roboto', sans-serif;
-	font-weight: 300;
-}
-
-.btn-primary {
-	background-color: #3498db;
-}
 
 .loading {
 	display: none;
@@ -33,26 +19,27 @@ h6 {
 	position: relative;
 	width: 80px;
 	height: 80px;
+
+	&:before {
+		content: '';
+		box-sizing: border-box;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 80px;
+		height: 80px;
+		margin-top: -40px;
+		margin-left: -40px;
+		border-radius: 50%;
+		border: 1px solid #ccc;
+		border-top-color: #07d;
+		animation: spinnerAnim .6s linear infinite;
+	}
+
 }
 
 .loading-spinner.loaded {
 	display: none;
-}
-
-.loading-spinner:before {
-	content: '';
-	box-sizing: border-box;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	width: 80px;
-	height: 80px;
-	margin-top: -40px;
-	margin-left: -40px;
-	border-radius: 50%;
-	border: 1px solid #ccc;
-	border-top-color: #07d;
-	animation: spinnerAnim .6s linear infinite;
 }
 
 @keyframes spinnerAnim {
@@ -98,64 +85,65 @@ h6 {
 
 }
 
-/* Header & Footer
+/* Header
 -------------------------------------------------- */
 #mainNav {
 	border-bottom: 1px solid #eee;
-}
 
-#mainNav .navbar-brand {
-	color: #3498db;
-}
+	.navbar-brand {
+		color: #3498db;
+	}
 
-#mainNav .navbar-nav .nav-item+.nav-item {
-	margin-left: 2rem;
-}
+	.navbar-nav .nav-item+.nav-item {
+		margin-left: 2rem;
+	}
 
-#footerMain {
-	border-top: 1px solid #eee;
 }
 
 /* Track Package
 -------------------------------------------------- */
-#trackNew .container {
-	padding-top: 7.5rem;
-	padding-bottom: 7.5rem;
-}
-
 #trackNew {
+	.container {
+		padding-top: 7.5rem;
+		padding-bottom: 7.5rem;
+	}
+
 	.input-group {
 		max-width: 420px;
 	}
+
+	.col-img:hover {
+		animation: bounce 1s ease infinite;
+	}
+
 }
 
-#trackNew .col-img:hover {
-	animation: bounce 1s ease infinite;
-}
-
-.hasCode #trackNew .container {
-	padding-top: 2.5rem;
-	padding-bottom: 2.5rem;
-}
-
-.hasCode .example-trackingcode,
-.hasCode #trackNew .col-img {
-	display: none;
-}
-
-/* Tracking History
+/* Toggle view depending on state
 -------------------------------------------------- */
 #trackingHistory {
 	display: none;
 }
 
-.hasCode #trackingHistory {
-	display: block;
-}
+.hasCode {
+	#trackNew {
+		// Gain space
+		.container {
+			padding-top: 2.5rem;
+			padding-bottom: 2.5rem;
+		}
 
-.hasCode #trackingHistory .tag {
-	font-size: .5em;
-	padding: 1.2em;
+		// Hide stuff
+		.col-img,
+		.example-trackingcode {
+			display: none;
+		}
+
+	}
+
+	#trackingHistory {
+		display: block;
+	}
+
 }
 
 /* Sticky footer styles
@@ -166,12 +154,12 @@ html {
 }
 
 body {
-
-	/* Margin bottom by footer height */
+	// Margin bottom by footer height
 	margin-bottom: 60px;
 }
 
-.footer {
+#footerMain {
+	border-top: 1px solid #eee;
 	position: absolute;
 	bottom: 0;
 	width: 100%;
