@@ -1,8 +1,12 @@
+var compression = require('compression');
 var express = require('express');
 var TrackService = require('thailand-post').TrackService;
 var app = express();
 var bodyParser = require('body-parser');
 var path = require('path');
+
+// compress all responses
+app.use(compression());
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
