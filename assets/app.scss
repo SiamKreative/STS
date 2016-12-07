@@ -135,6 +135,7 @@ $headings-font-weight: 300;
 	.alert-info {
 		display: inline-block;
 	}
+
 	.alert-success {
 		&.loading {
 			display: none;
@@ -170,23 +171,43 @@ $headings-font-weight: 300;
 
 }
 
-/* Sticky footer styles
+/* Footer
 -------------------------------------------------- */
-html {
-	position: relative;
-	min-height: 100%;
-}
-
-body {
-	// Margin bottom by footer height
-	margin-bottom: 60px;
-}
-
 #footerMain {
 	border-top: 1px solid #eee;
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	height: 60px;
-	line-height: 60px;
+	padding: 15px 0;
+}
+
+/* Media Queries
+-------------------------------------------------- */
+@include media-breakpoint-up(sm) {
+	html {
+		position: relative;
+		min-height: 100%;
+	}
+
+	body {
+		// Margin bottom by footer height
+		margin-bottom: 60px;
+	}
+
+	#footerMain {
+		padding: 0;
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		height: 60px;
+		line-height: 60px;
+	}
+
+	#trackNew {
+		.input-group > .form-control,
+		.input-group > .input-group-addon,
+		.input-group > .input-group-btn > .btn {
+			padding: 0.75rem 1.5rem;
+			font-size: 1.25rem;
+		}
+
+	}
+
 }
