@@ -34,8 +34,6 @@ new Vue({
 					self.loading = false;
 					self.items = response.body.items;
 				})
-			} else {
-				console.log('No WORK');
 			}
 		}
 	}
