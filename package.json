@@ -8,6 +8,11 @@
   },
   "author": "Julien Vernet <julien@vernet.me>",
   "license": "MIT",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/SiamKreative/STS.git"
+  },  
   "dependencies": {
     "body-parser": "^1.15.2",
     "bootstrap": "^4.0.0-alpha.5",
